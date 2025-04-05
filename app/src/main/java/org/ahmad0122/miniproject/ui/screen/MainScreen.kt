@@ -161,10 +161,15 @@ fun MainScreen(navController: NavHostController) {
                 .padding(innerPadding),
             color = MaterialTheme.colorScheme.background
         ) {
-
+            ScreenContent(
+                onResultChanged = { result ->
+                    currentResult = result
+                }
+            )
         }
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
