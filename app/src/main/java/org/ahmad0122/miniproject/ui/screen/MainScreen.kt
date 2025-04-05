@@ -28,6 +28,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -43,6 +44,18 @@ import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import org.ahmad0122.miniproject.R
 import org.ahmad0122.miniproject.navigation.Screen
+import java.text.NumberFormat
+import java.util.Locale
+
+
+private fun formatCurrency(value: Float, currency: String): String {
+    val formatter = when (currency) {
+        "IDR" -> NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        "USD" -> NumberFormat.getCurrencyInstance(Locale.US)
+        else -> NumberFormat.getCurrencyInstance()
+    }
+    return formatter.format(value)
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -145,10 +158,38 @@ fun ScreenContent(
     var amountError by rememberSaveable { mutableStateOf(false) }
     var fromCurrency by rememberSaveable { mutableStateOf("IDR") }
     var toCurrency by rememberSaveable { mutableStateOf("USD") }
+    var result by rememberSaveable { mutableFloatStateOf(0f) }
     var isExpandedFrom by rememberSaveable { mutableStateOf(false) }
     var isExpandedTo by rememberSaveable { mutableStateOf(false) }
 
     val currencies = listOf("IDR", "USD")
+    val exchangeRate = 16555f
+
+    fun convertCurrency() {
+        if (amount.isEmpty()) {
+            amountError = true
+            result = 0f
+            return
+        }
+
+        val amountValue = amount.toFloatOrNull()
+        if (amountValue == null || amountValue <= 0) {
+            amountError = true
+            result = 0f
+            return
+        }
+
+        result = when {
+            fromCurrency == "IDR" && toCurrency == "USD" -> amountValue / exchangeRate
+            fromCurrency == "USD" && toCurrency == "IDR" -> amountValue * exchangeRate
+            else -> amountValue
+        }
+        amountError = false
+
+        val formattedAmount = formatCurrency(amountValue, fromCurrency)
+        val formattedResult = formatCurrency(result, toCurrency)
+        onResultChanged("$formattedAmount = $formattedResult")
+    }
 
     Column(
         modifier = Modifier
