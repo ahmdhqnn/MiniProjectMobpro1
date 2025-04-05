@@ -1,18 +1,24 @@
 <resources>
     <string name="app_name">Currency Converter</string>
-    <string name="app_bio">Aplikasi konversi mata uang sederhana</string>
-    <string name="app_title">Currency Converter</string>
+    <string name="app_bio">Convert currencies easily</string>
+    <string name="amount">Enter amount</string>
+    <string name="from_currency">From currency</string>
+    <string name="to_currency">To currency</string>
+    <string name="input_invalid">Please enter a valid number</string>
+    <string name="convert">Convert</string>
+    <string name="reset">Reset</string>
+    <string name="result">Conversion result: %1$,.2f</string>
 
+    <string name="about_app">About App</string>
+    <string name="copyright">Currency converter is a simple application that can be used to convert IDR to USD and vice versa. In this app, users can enter the amount of money they want to convert and choose the source and target currencies. \nCopyright @ 2025 Ahmad Hakin Najili. \nAll rights reserved.</string>
+    <string name="back">Back</string>
     <string name="share">Share</string>
-    <string name="more">More</string>
+    <string name="share_template">%1$,.2f %2$s = %3$,.2f %4$s</string>
+    <string name="exchange_rate">Exchange rate: 1 USD = %1$s</string>
+    <string name="menu_share">Share Result</string>
     <string name="menu_rate">Rate App</string>
     <string name="menu_about">About</string>
-    <string name="share_subject">Check out this currency conversion</string>
-    <string name="share_text">I converted %1$s using Currency Converter app</string>
-
-    <string name="amount">Amount</string>
-    <string name="from_currency">From Currency</string>
-    <string name="to_currency">To Currency</string>
-    <string name="error_invalid_amount">Please enter a valid amount</string>
-
+    <string name="share_subject">Currency Conversion Result</string>
+    <string name="share_text">Check out this currency conversion: %1$s</string>
+    <string name="more">More options</string>
 </resources>
