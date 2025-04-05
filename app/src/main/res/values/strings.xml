@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MiniProject</string>
+    <string name="app_name">Currency Converter</string>
+    <string name="app_bio">Aplikasi konversi mata uang sederhana</string>
 </resources>
