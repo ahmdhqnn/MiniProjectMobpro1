@@ -9,4 +9,10 @@
     <string name="menu_about">About</string>
     <string name="share_subject">Check out this currency conversion</string>
     <string name="share_text">I converted %1$s using Currency Converter app</string>
+
+    <string name="amount">Amount</string>
+    <string name="from_currency">From Currency</string>
+    <string name="to_currency">To Currency</string>
+    <string name="error_invalid_amount">Please enter a valid amount</string>
+
 </resources>

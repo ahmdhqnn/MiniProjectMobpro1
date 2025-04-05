@@ -1,17 +1,26 @@
 package org.ahmad0122.miniproject.ui.screen
 
 import android.content.Intent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,10 +31,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import org.ahmad0122.miniproject.R
@@ -119,6 +132,71 @@ fun MainScreen(navController: NavHostController) {
             color = MaterialTheme.colorScheme.background
         ) {
 
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScreenContent(
+    onResultChanged: (String) -> Unit = {}
+) {
+    var amount by rememberSaveable { mutableStateOf("") }
+    var amountError by rememberSaveable { mutableStateOf(false) }
+    var fromCurrency by rememberSaveable { mutableStateOf("IDR") }
+    var toCurrency by rememberSaveable { mutableStateOf("USD") }
+    var isExpandedFrom by rememberSaveable { mutableStateOf(false) }
+    var isExpandedTo by rememberSaveable { mutableStateOf(false) }
+
+    val currencies = listOf("IDR", "USD")
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
+            value = amount,
+            onValueChange = { amount = it },
+            label = { Text(stringResource(R.string.amount)) },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            ),
+            isError = amountError,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        ExposedDropdownMenuBox(
+            expanded = isExpandedFrom,
+            onExpandedChange = { isExpandedFrom = it },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            OutlinedTextField(
+                value = fromCurrency,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text(stringResource(R.string.from_currency)) },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpandedFrom) },
+                modifier = Modifier.menuAnchor()
+            )
+            DropdownMenu(
+                expanded = isExpandedFrom,
+                onDismissRequest = { isExpandedFrom = false }
+            ) {
+                currencies.forEach { currency ->
+                    DropdownMenuItem(
+                        text = { Text(currency) },
+                        onClick = {
+                            fromCurrency = currency
+                            isExpandedFrom = false
+                        }
+                    )
+                }
+            }
         }
     }
 }
