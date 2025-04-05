@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Currency Converter</string>
     <string name="app_bio">Aplikasi konversi mata uang sederhana</string>
+    <string name="app_title">Currency Converter</string>
 </resources>
