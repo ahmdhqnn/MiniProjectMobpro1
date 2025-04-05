@@ -2,4 +2,11 @@
     <string name="app_name">Currency Converter</string>
     <string name="app_bio">Aplikasi konversi mata uang sederhana</string>
     <string name="app_title">Currency Converter</string>
+
+    <string name="share">Share</string>
+    <string name="more">More</string>
+    <string name="menu_rate">Rate App</string>
+    <string name="menu_about">About</string>
+    <string name="share_subject">Check out this currency conversion</string>
+    <string name="share_text">I converted %1$s using Currency Converter app</string>
 </resources>
