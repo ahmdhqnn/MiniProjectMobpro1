@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konverter Mata Uang</string>
+    <string name="app_bio">Konversi mata uang dengan mudah</string>
+    <string name="amount">Masukkan jumlah</string>
+    <string name="from_currency">Dari mata uang</string>
+    <string name="to_currency">Ke mata uang</string>
+    <string name="input_invalid">Masukkan angka yang valid</string>
+    <string name="convert">Konversi</string>
+    <string name="reset">Reset</string>
+    <string name="result">Hasil konversi: %1$,.2f</string>
+    <string name="about_app">Tentang Aplikasi</string>
+    <string name="copyright">Aplikasi konverter mata uang adalah aplikasi sederhana yang dapat digunakan untuk mengkonversi mata uang IDR ke USD dan sebaliknya. Dalam aplikasi ini, pengguna dapat memasukkan jumlah uang yang ingin dikonversi dan memilih mata uang asal dan tujuan. \nCopyright @ 2025 Ahmad Hakin Najili. \nAll rights reserved.</string>
+    <string name="back">Kembali</string>
+    <string name="share">Bagikan</string>
+    <string name="share_template">%1$,.2f %2$s = %3$,.2f %4$s</string>
+    <string name="exchange_rate">Kurs: 1 USD = %1$s</string>
+    <string name="menu_share">Bagikan Hasil</string>
+    <string name="menu_rate">Nilai Aplikasi</string>
+    <string name="menu_about">Tentang</string>
+    <string name="share_subject">Hasil Konversi Mata Uang</string>
+    <string name="share_text">Lihat hasil konversi mata uang ini: %1$s</string>
+    <string name="more">Opsi lainnya</string>
+</resources>
