@@ -290,7 +290,6 @@ fun ScreenContent(
                             label = { Text(stringResource(R.string.from_currency)) },
                             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpandedFrom) },
                             modifier = Modifier
-                                .menuAnchor()
                                 .clip(RoundedCornerShape(12.dp)),
                             shape = RoundedCornerShape(12.dp)
                         )
@@ -348,7 +347,6 @@ fun ScreenContent(
                             label = { Text(stringResource(R.string.to_currency)) },
                             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpandedTo) },
                             modifier = Modifier
-                                .menuAnchor()
                                 .clip(RoundedCornerShape(12.dp)),
                             shape = RoundedCornerShape(12.dp)
                         )
